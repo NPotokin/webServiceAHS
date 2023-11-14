@@ -17,6 +17,6 @@ model HospitalTimeStamp {
   monthUTC    String
   dayUTC      Int
   hourUTC     Int
-  minutUTC   Int
+  minuteUTC   Int
   waitTimeMin Int?
   }
