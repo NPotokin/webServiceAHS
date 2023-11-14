@@ -18,5 +18,5 @@ model HospitalTimeStamp {
   day      Int
   hour     Int
   minute   Int
-  waitTimeHr Int?
+  waitTimeMin Int?
   }

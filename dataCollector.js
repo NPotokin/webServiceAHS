@@ -28,7 +28,7 @@ async function getDataAndTransformIt() {
 
               const extractedData = {
                 Name: obj.Name,
-                waitTimeHr: transformedWaitTime,
+                waitTimeMin: transformedWaitTime,
                 year: year,
                 month: month,
                 day: day,
