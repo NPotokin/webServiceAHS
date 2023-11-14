@@ -2,7 +2,7 @@ import axios from 'axios';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
-const url = process.env.REQUEST_URL 
+const url = "https://www.albertahealthservices.ca/Webapps/WaitTimes/api/waittimes/en" 
 async function getDataAndTransformIt() {
   try {
     const response = await axios.get(url);
@@ -29,11 +29,11 @@ async function getDataAndTransformIt() {
               const extractedData = {
                 Name: obj.Name,
                 waitTimeMin: transformedWaitTime,
-                year: year,
-                month: month,
-                day: day,
-                hour: hour,
-                minute: minute,
+                yearUTC: year,
+                monthUTC: month,
+                dayUTC: day,
+                hourUTC: hour,
+                minuteUTC: minute,
               };
 
               try {

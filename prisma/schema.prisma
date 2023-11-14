@@ -13,10 +13,10 @@ datasource db {
 model HospitalTimeStamp {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
   Name     String
-  year     Int
-  month    String
-  day      Int
-  hour     Int
-  minute   Int
+  yearUTC     Int
+  monthUTC    String
+  dayUTC      Int
+  hourUTC     Int
+  minutUTC   Int
   waitTimeMin Int?
   }
