@@ -11,8 +11,9 @@ datasource db {
 }
 
 model HospitalTimeStamp {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  Name     String
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  Name        String
+  slug        String
   yearUTC     Int
   monthUTC    String
   dayUTC      Int

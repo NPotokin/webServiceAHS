@@ -2,7 +2,8 @@ import axios from 'axios';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
-const url = "https://www.albertahealthservices.ca/Webapps/WaitTimes/api/waittimes/en" 
+const url = process.env.REQUEST_URL;
+
 async function getDataAndTransformIt() {
   try {
     const response = await axios.get(url);
@@ -26,6 +27,19 @@ async function getDataAndTransformIt() {
                 transformWaitTimeToMinutes(waitTime).toFixed(2)
               );
 
+              // Generate slug based on the hospital name
+              const slug = obj.Name
+                .toLowerCase()
+                .replace(/[^a-zA-Z0-9\s]/g, '') // Remove non-alphanumeric characters
+                .split(' ')
+                .map((word, index) => {
+                  if (index === 0) {
+                    return word.toLowerCase();
+                  }
+                  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                })
+                .join('');
+
               const extractedData = {
                 Name: obj.Name,
                 waitTimeMin: transformedWaitTime,
@@ -34,6 +48,7 @@ async function getDataAndTransformIt() {
                 dayUTC: day,
                 hourUTC: hour,
                 minuteUTC: minute,
+                slug: slug,
               };
 
               try {
