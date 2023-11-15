@@ -81,7 +81,7 @@ function transformWaitTimeToMinutes(waitTimeString) {
   }
 
   return totalMinutes;
-}
+};
 
 // Set up an interval to call getDataAndTransformIt every 2 minutes (120,000 milliseconds)
 setInterval(getDataAndTransformIt, 120000);
