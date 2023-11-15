@@ -42,13 +42,13 @@ async function getDataAndTransformIt() {
 
               const extractedData = {
                 Name: obj.Name,
+                slug: slug,
                 waitTimeMin: transformedWaitTime,
                 yearUTC: year,
                 monthUTC: month,
                 dayUTC: day,
                 hourUTC: hour,
                 minuteUTC: minute,
-                slug: slug,
               };
 
               try {
