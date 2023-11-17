@@ -10,13 +10,16 @@ async function getDataAndTransformIt() {
     const dataSet = response.data;
     console.log(response.data);
 
-    const currentDate = new Date();
-    const year = currentDate.getUTCFullYear();
-    const month = currentDate.toLocaleString('default', { month: 'short' });
-    const day = currentDate.getUTCDate();
-    const hour = currentDate.getUTCHours();
-    const minute = currentDate.getUTCMinutes();
-
+    const currentDate = new Date(); // Current date and time
+    const currentUTCDate = new Date(Date.UTC(
+      currentDate.getUTCFullYear(),
+      currentDate.getUTCMonth(),
+      currentDate.getUTCDate(),
+      currentDate.getUTCHours(),
+      currentDate.getUTCMinutes(),
+      currentDate.getUTCSeconds()
+    ));
+    
     for (const city in dataSet) {
       if (dataSet.hasOwnProperty(city)) {
         for (const category in dataSet[city]) {
@@ -44,11 +47,7 @@ async function getDataAndTransformIt() {
                 Name: obj.Name,
                 slug: slug,
                 waitTimeMin: transformedWaitTime,
-                yearUTC: year,
-                monthUTC: month,
-                dayUTC: day,
-                hourUTC: hour,
-                minuteUTC: minute,
+                dateTime: currentUTCDate
               };
 
               try {

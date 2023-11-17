@@ -14,10 +14,6 @@ model HospitalTimeStamp {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   Name        String
   slug        String
-  yearUTC     Int
-  monthUTC    String
-  dayUTC      Int
-  hourUTC     Int
-  minuteUTC   Int
-  waitTimeMin Int?
+  dateTime    DateTime
+  waitTimeMin Int
   }
